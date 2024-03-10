@@ -1,0 +1,11 @@
+@import url("./vendor/fonts.css");
+
+.body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.root {
+  display: flex;
+  justify-content: center;
+}

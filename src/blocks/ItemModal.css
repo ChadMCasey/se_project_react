@@ -1,0 +1,14 @@
+.modal__image {
+  margin-bottom: 20px;
+}
+
+.modal__heading {
+  margin-top: 0px;
+  margin-bottom: 12px;
+  margin-left: 32px;
+}
+
+/* last child pseduo */
+.modal__heading:last-child {
+  margin-bottom: 32px;
+}

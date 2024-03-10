@@ -1,0 +1,20 @@
+.card-items__heading {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 34px;
+}
+
+.card-items__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media screen and (320px <= width <= 790px) {
+  .card-items__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

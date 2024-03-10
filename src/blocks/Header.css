@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.header__section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__text {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 20px;
+}
+
+.header__text-add {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.header__text-name {
+  margin-right: 12px;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+  margin-right: 24px;
+}
+
+.header__avatar {
+  width: 40px;
+  height: 40px;
+}

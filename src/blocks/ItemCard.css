@@ -1,0 +1,36 @@
+.card-items__heading {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 34px;
+}
+
+.card-items__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  border-radius: 19px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
+.card__image {
+  max-width: 100%;
+  min-width: 162px;
+}
+
+.card__title {
+  background-color: white;
+  position: absolute;
+  border-radius: 4px;
+  padding: 0px 12px;
+  font-size: 16px;
+}
