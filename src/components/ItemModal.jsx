@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "../blocks/ItemModal.css";
+import "../blocks/CardModal.css";
 
 function ItemModal({ onClose, card, activeModal, name, weather }) {
   useEffect(() => {
@@ -22,7 +22,7 @@ function ItemModal({ onClose, card, activeModal, name, weather }) {
         e.target === e.currentTarget && onClose();
       }}
     >
-      <div className="modal__container">
+      <div className="modal__container card-modal__container">
         <button
           className="modal__close"
           type="button"

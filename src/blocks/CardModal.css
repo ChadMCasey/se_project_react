@@ -1,0 +1,31 @@
+.card-modal__container .modal__image {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.card-modal__container .modal__heading {
+  margin-top: 0px;
+  margin-bottom: 12px;
+  margin-left: 32px;
+}
+
+/* last child pseduo */
+.card-modal__container .modal__heading:last-child {
+  margin-bottom: 32px;
+}
+
+.card-modal__container .modal__close {
+  background-image: url("../assets/CloseWhite.svg");
+}
+
+@media screen and (width <= 490px) {
+  .card-modal__container .modal__heading {
+    margin-left: 20px;
+  }
+  .card-modal__container .modal__heading:last-child {
+    margin-bottom: 40px;
+  }
+  .card-modal__container .modal__close {
+    background-image: url("../assets/CloseBlack.svg");
+  }
+}

@@ -1,15 +1,22 @@
-import { weatherImages } from "../utils/constants";
+import { chooseTimeofDay, weatherImages } from "../scripts/utils/constants.js";
 import "../blocks/WeatherCard.css";
 
-function WeatherCard(props) {
+function WeatherCard({ temperature, weatherStatus, timeOfDay }) {
+  const image = weatherImages.find((obj) => {
+    return obj.name === `${timeOfDay}-${weatherStatus}`;
+  });
+
+  console.log(timeOfDay);
   return (
     <section className="weather-card">
-      <img
-        className="weather-card__image"
-        src={weatherImages[0].image}
-        alt={weatherImages[0].image}
-      />
-      <h2 className="weather-card__temperature">{props.temperature}° F</h2>
+      {image && (
+        <img
+          className="weather-card__image"
+          src={image.image}
+          alt={image.name}
+        />
+      )}
+      <h2 className="weather-card__temperature">{temperature}° F</h2>
     </section>
   );
 }

@@ -1,0 +1,50 @@
+.hamburger-modal {
+  border-radius: 10px;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  gap: 24px;
+  flex-flow: column;
+  place-content: center;
+  place-items: center;
+  background-color: white;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  width: calc(100% - 32px);
+  height: 220px;
+  z-index: 10;
+  transition: opacity 0.2s linear, visibility 0.2s;
+}
+
+.hamburger_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hamburger-modal__user {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-modal__name {
+  margin-right: 12px;
+}
+
+.hamburger-modal__add {
+  margin-right: 0px;
+}
+
+.hamburger-modal__close {
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 21px;
+  width: 21px;
+  top: 12px;
+  right: 12px;
+  position: absolute;
+  background: center no-repeat url("../assets/CloseBlack.svg");
+  background-size: cover;
+}

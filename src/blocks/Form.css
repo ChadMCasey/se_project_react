@@ -30,6 +30,7 @@
   flex-direction: column;
   margin-bottom: 24px;
   width: 100%;
+  position: relative;
 }
 
 .form__input {
@@ -48,26 +49,90 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-.form__fieldset-checkbox {
+.form__fieldset-radio {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.form__field-checkbox {
+.form__field-radio {
+  margin-top: 0px;
+  border: none;
   display: flex;
   align-content: center;
   color: rgba(0, 0, 0, 0.5);
   accent-color: rgba(0, 0, 0, 0.5);
 }
 
-.form__input-checkbox {
+.form__input-radio {
   width: 16px;
   height: 16px;
-  margin-top: 0px;
-  margin-right: 8px;
+  margin: 0px 8px 0px 0px;
 }
 
-.form__input-checkbox:checked + .form__label-checkbox {
+.form__input-radio:checked + .form__label-radio {
   color: #000;
+}
+
+.form__submit {
+  font-family: inherit;
+  margin-top: 32px;
+  margin-bottom: 36px;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: fit-content;
+  border: none;
+  background-color: rgba(0, 0, 0);
+  transition: opacity 0.3s ease-in-out;
+  color: #fff;
+}
+
+.form__submit:hover {
+  opacity: 0.6;
+}
+
+.form__submit:disabled {
+  opacity: 0.3;
+}
+
+.form__input_type_error {
+  border-bottom: 1px solid #ff0000;
+}
+
+.form__input-error {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.form__input-error_active {
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 5px);
+  color: #ff0000;
+  font-size: 12px;
+  margin-bottom: 10px;
+  opacity: 1;
+}
+
+@media screen and (width <= 490px) {
+  .form {
+    padding: 32px 16px 0px;
+  }
+  .form__header {
+    font-size: 20px;
+    margin-bottom: 37px;
+  }
+  .form__submit {
+    margin-bottom: 32px;
+    margin-top: 30px;
+    height: 44px;
+    width: 100%;
+  }
 }

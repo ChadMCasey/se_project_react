@@ -1,3 +1,5 @@
+import { chooseStatus, chooseWeather, chooseTimeofDay } from "./constants";
+
 export default class weatherAPI {
   constructor({ apiKey, coords, headers }) {
     this._apiKey = apiKey;
@@ -21,8 +23,11 @@ export default class weatherAPI {
     return {
       location: res.name,
       temperature: Math.round(res.main.temp),
-      weather:
-        res.main.temp >= 86 ? "hot" : res.main.temp >= 66 ? "warm" : "cold",
+      weather: {
+        temp: chooseWeather(res.main.temp),
+        status: chooseStatus(res.weather[0].id),
+      },
+      timeofday: chooseTimeofDay(res.sys.sunrise, res.sys.sunset),
     };
   }
 }

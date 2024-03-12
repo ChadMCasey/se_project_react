@@ -1,0 +1,14 @@
+.modal_type_new-garment .modal__close {
+  opacity: 0.3;
+}
+
+@media screen and (width <= 490px) {
+  .modal_type_new-garment {
+    place-items: end;
+    padding: 0px;
+  }
+  .modal_type_new-garment .modal__container {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}

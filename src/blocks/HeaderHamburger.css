@@ -1,0 +1,18 @@
+.header-hamburger__container {
+  height: 44px;
+  width: 44px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px 0px;
+}
+
+.header-hamburger__bar {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: #000;
+}
