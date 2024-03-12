@@ -21,64 +21,58 @@ const weatherImages = [
   },
   {
     name: "Day-Cloudy",
-    image: new URL("../../assets/DayWeather/Day-Cloudy.png", import.meta.url)
-      .href,
+    image: new URL("../assets/DayWeather/Day-Cloudy.png", import.meta.url).href,
   },
   {
     name: "Day-Fog",
-    image: new URL("../../assets/DayWeather/Day-Fog.png", import.meta.url).href,
+    image: new URL("../assets/DayWeather/Day-Fog.png", import.meta.url).href,
   },
   {
     name: "Day-Snow",
-    image: new URL("../../assets/DayWeather/Day-Snow.png", import.meta.url)
-      .href,
+    image: new URL("../assets/DayWeather/Day-Snow.png", import.meta.url).href,
   },
   {
     name: "Day-Storm",
-    image: new URL("../../assets/DayWeather/Day-Storm.png", import.meta.url)
-      .href,
+    image: new URL("../assets/DayWeather/Day-Storm.png", import.meta.url).href,
   },
   {
     name: "Day-Rain",
-    image: new URL("../../assets/DayWeather/Day-Rain.png", import.meta.url)
-      .href,
+    image: new URL("../assets/DayWeather/Day-Rain.png", import.meta.url).href,
   },
 
   {
     name: "Night-Storm",
-    image: new URL("../../assets/NightWeather/Night-Storm.png", import.meta.url)
+    image: new URL("../assets/NightWeather/Night-Storm.png", import.meta.url)
       .href,
   },
   {
     name: "Night-Sunny",
-    image: new URL("../../assets/NightWeather/Night-Sunny.png", import.meta.url)
+    image: new URL("../assets/NightWeather/Night-Sunny.png", import.meta.url)
       .href,
   },
   {
     name: "Night-Fog",
-    image: new URL("../../assets/NightWeather/Night-Fog.png", import.meta.url)
+    image: new URL("../assets/NightWeather/Night-Fog.png", import.meta.url)
       .href,
   },
   {
     name: "Night-Storm",
-    image: new URL("../../assets/NightWeather/Night-Storm.png", import.meta.url)
+    image: new URL("../assets/NightWeather/Night-Storm.png", import.meta.url)
       .href,
   },
   {
     name: "Night-Snow",
-    image: new URL("../../assets/NightWeather/Night-Snow.png", import.meta.url)
+    image: new URL("../assets/NightWeather/Night-Snow.png", import.meta.url)
       .href,
   },
   {
     name: "Night-Cloudy",
-    image: new URL(
-      "../../assets/NightWeather/Night-Cloudy.png",
-      import.meta.url
-    ).href,
+    image: new URL("../assets/NightWeather/Night-Cloudy.png", import.meta.url)
+      .href,
   },
   {
     name: "Night-Rain",
-    image: new URL("../../assets/NightWeather/Night-Rain.png", import.meta.url)
+    image: new URL("../assets/NightWeather/Night-Rain.png", import.meta.url)
       .href,
   },
 ];
