@@ -1,4 +1,4 @@
-import { chooseTimeofDay, weatherImages } from "../scripts/utils/constants.js";
+import { chooseTimeofDay, weatherImages } from "../utils/constants.js";
 import "../blocks/WeatherCard.css";
 
 function WeatherCard({ temperature, weatherStatus, timeOfDay }) {

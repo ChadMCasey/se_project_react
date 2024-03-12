@@ -4,9 +4,8 @@ import Main from "./Main";
 import Footer from "./Footer";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
-import { apiKey, coords } from "../scripts/utils/constants.js";
-import weatherAPI from "../scripts/utils/weatherApi.js";
-import { defaultClothingItems } from "../scripts/utils/constants.js";
+import { apiKey, coords, defaultClothingItems } from "../utils/constants.js";
+import weatherAPI from "../utils/weatherApi.js";
 import { useState, useEffect } from "react";
 
 const api = new weatherAPI({

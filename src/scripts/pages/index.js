@@ -1,5 +1,5 @@
-import { formValidationConfig } from "../utils/constants";
-import FormValidator from "../components/formValidator";
+import { formValidationConfig } from "../../utils/constants";
+import FormValidator from "../../scripts/components/formValidator";
 const forms = Array.from(document.getElementsByTagName("form"));
 
 forms.forEach((form) => {
