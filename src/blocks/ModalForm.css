@@ -43,6 +43,7 @@
   background: center no-repeat url("../assets/CloseBlack.svg");
   background-size: contain;
   transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .modal__close:hover {

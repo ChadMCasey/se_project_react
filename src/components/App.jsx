@@ -39,14 +39,29 @@ function App() {
   }
 
   useEffect(() => {
-    api.getWeatherData().then((data) => {
-      setTemperature(data.temperature);
-      setLocation(data.location);
-      setWeather(data.weather.temp);
-      setWeatherStatus(data.weather.status);
-      setTimeOfDay(data.timeofday);
-    });
+    api
+      .getWeatherData()
+      .then((data) => {
+        setTemperature(data.temperature);
+        setLocation(data.location);
+        setWeather(data.weather.temp);
+        setWeatherStatus(data.weather.status);
+        setTimeOfDay(data.timeofday);
+      })
+      .catch((error) => {
+        console.log(`Error Status Code: ${error.status}`);
+      });
   }, []);
+
+  useEffect(() => {
+    function escapeClose(e) {
+      e.key === "Escape" && onClose();
+    }
+    window.addEventListener("keydown", escapeClose);
+    return () => {
+      window.removeEventListener("keydown", escapeClose);
+    };
+  }, [activeModal]);
 
   return (
     <div className="app">

@@ -2,17 +2,6 @@ import { useEffect } from "react";
 import "../blocks/CardModal.css";
 
 function ItemModal({ onClose, card, activeModal, name, weather }) {
-  useEffect(() => {
-    if (activeModal !== "card-modal") return;
-    function escapeClose(e) {
-      e.key === "Escape" && onClose();
-    }
-    window.addEventListener("keydown", escapeClose);
-    return () => {
-      window.removeEventListener("keydown", escapeClose);
-    };
-  }, [activeModal]);
-
   return (
     <div
       className={`modal ${

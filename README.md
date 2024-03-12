@@ -1,5 +1,13 @@
-# WTWR
+# What To Wear (WTWR)
 
-i will fill in this template, i just wanted to get my project submitted so the review process could be underway.
+What To Wear is a basic full stack application that allows users to enter clothing articles, establish what weather conditions these clothing articles are intended for, and filter these items by the weather conditions. This was my first full stack application, and was a blast to create!
 
-Also if you are reading this and you are a code reviewer, i wasnt able to get form validation to work. I need the js script "formValidator.js" and "index.js" to run after the dom has created the form elements for the form validation to apply to the forms. I think i need to defer those scripts in some way. Please leave some comments to help me out regarding this. 
+This Project Features:
+
+- Responsive Design
+- JS, HTML, CSS, React
+- Mongdb, Node.js, Express.js
+- OpenWeatherAPI
+- User Authentication
+
+[Live Github Pages](https://chadmcasey.github.io/se_project_react/)

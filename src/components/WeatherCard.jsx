@@ -1,4 +1,4 @@
-import { chooseTimeofDay, weatherImages } from "../utils/constants.js";
+import { weatherImages } from "../utils/constants.js";
 import "../blocks/WeatherCard.css";
 
 function WeatherCard({ temperature, weatherStatus, timeOfDay }) {
@@ -6,7 +6,6 @@ function WeatherCard({ temperature, weatherStatus, timeOfDay }) {
     return obj.name === `${timeOfDay}-${weatherStatus}`;
   });
 
-  console.log(timeOfDay);
   return (
     <section className="weather-card">
       {image && (

@@ -34,6 +34,7 @@
 
 .hamburger-modal__add {
   margin-right: 0px;
+  cursor: pointer;
 }
 
 .hamburger-modal__close {
@@ -47,4 +48,5 @@
   position: absolute;
   background: center no-repeat url("../assets/CloseBlack.svg");
   background-size: cover;
+  cursor: pointer;
 }

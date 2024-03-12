@@ -14,17 +14,6 @@ function ModalWithForm({
   children,
   submitCallback,
 }) {
-  useEffect(() => {
-    if (activeModal !== "add-modal") return;
-    function escapeClose(e) {
-      e.key === "Escape" && onClose();
-    }
-    window.addEventListener("keydown", escapeClose);
-    return () => {
-      window.removeEventListener("keydown", escapeClose);
-    };
-  }, [activeModal]);
-
   function gatherFormData(e) {
     e.preventDefault();
     const formSubmissionData = {};

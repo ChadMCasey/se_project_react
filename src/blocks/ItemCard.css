@@ -9,6 +9,7 @@
 
 .card__image {
   max-width: 100%;
+  cursor: pointer;
 }
 
 .card__overlay-elements {
@@ -33,6 +34,7 @@
   width: 18px;
   height: 16px;
   transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .card__heart:hover {

@@ -68,6 +68,7 @@
   width: 16px;
   height: 16px;
   margin: 0px 8px 0px 0px;
+  cursor: pointer;
 }
 
 .form__input-radio:checked + .form__label-radio {
@@ -86,6 +87,7 @@
   background-color: rgba(0, 0, 0);
   transition: opacity 0.3s ease-in-out;
   color: #fff;
+  cursor: pointer;
 }
 
 .form__submit:hover {
