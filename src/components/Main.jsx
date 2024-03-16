@@ -3,11 +3,11 @@ import ItemCard from "./ItemCard";
 import "../blocks/ItemCards.css";
 import "../blocks/Main.css";
 import { useContext } from "react";
-import { CurrentTemperatureUnitContext } from "../contexts/currentTemperatureUnit";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 
 function Main({
   temperature,
-  images,
+  clothing,
   setCurrentCard,
   onOpen,
   weather,
@@ -31,16 +31,18 @@ function Main({
       </h2>
       <section className="card-items">
         <ul className="card-items__list">
-          {images
-            // .filter((image) => image.weather == weather)
-            .map((image) => (
-              <ItemCard
-                image={image}
-                key={image._id}
-                setCurrentCard={setCurrentCard}
-                onOpen={onOpen}
-              />
-            ))}
+          {/* wait for api */}
+          {clothing.length > 0 &&
+            clothing
+              .filter((item) => item.weather == weather)
+              .map((item) => (
+                <ItemCard
+                  item={item}
+                  key={item._id}
+                  setCurrentCard={setCurrentCard}
+                  onOpen={onOpen}
+                />
+              ))}
         </ul>
         <button className="card-items__randomize" type="button">
           <span className="cards-items__randomize-refresh"> &#8635;</span>

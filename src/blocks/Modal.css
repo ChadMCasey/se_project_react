@@ -10,7 +10,7 @@
   opacity: 0;
   padding: 16px;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: opacity 0.5s linear, visibility 0.3s;
+  transition: opacity 0.4s linear, visibility 0.3s;
   visibility: hidden;
 }
 
@@ -48,4 +48,19 @@
 
 .modal__close:hover {
   opacity: 0.8;
+}
+
+.modal__delete {
+  border: none;
+  background-color: transparent;
+  color: #ff4d00;
+  font-family: inherit;
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px;
+  transition: color 0.3s ease-in-out;
+}
+
+.modal__delete:hover {
+  color: rgb(204, 0, 0);
 }

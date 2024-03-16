@@ -1,0 +1,49 @@
+.delete-modal .modal__container {
+  flex-basis: 670px;
+  padding: 60px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.delete-modal .modal__heading {
+  line-height: 1.2;
+  margin-bottom: 0px;
+  font-size: inherit;
+  text-align: center;
+}
+
+.delete-modal .modal__heading:last-of-type {
+  margin-bottom: 40px;
+}
+
+.delete-modal .modal__delete {
+  font-weight: inherit;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.delete-modal .modal__cancel {
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.delete-modal .modal__cancel:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.delete-modal .modal__close {
+  opacity: 0.3;
+}
+
+.delete-modal .modal__close:hover {
+  opacity: 0.7;
+}

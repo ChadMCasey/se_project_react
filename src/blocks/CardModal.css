@@ -12,7 +12,11 @@
 }
 
 .modal__heading {
-  margin: 0px 0px 12px;
+  margin: 0px 15px 12px 0px;
+}
+
+.modal__delete {
+  text-wrap: nowrap;
 }
 
 .modal__heading:last-child {
@@ -21,20 +25,4 @@
 
 .card-modal__container .modal__close {
   background-image: url("../assets/CloseWhite.svg");
-}
-
-.modal__delete {
-  border: none;
-  background-color: transparent;
-  color: #ff4d00;
-  font-family: inherit;
-  font-size: 20px;
-  padding: 0px;
-  margin: 0px;
-}
-
-@media screen and (width <= 490px) {
-  .card-modal__container .modal__heading:last-child {
-    margin-bottom: 40px;
-  }
 }

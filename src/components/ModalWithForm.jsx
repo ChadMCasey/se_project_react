@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "../blocks/ModalForm.css";
+import "../blocks/Modal.css";
 import "../blocks/Form.css";
 import "../blocks/NewGarmentModal.css";
 import { unmountComponentAtNode } from "react-dom";

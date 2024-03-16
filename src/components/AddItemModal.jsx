@@ -4,7 +4,7 @@ import ModalWithForm from "./ModalWithForm";
 
 const AddItemModal = (props) => {
   const [name, setName] = useState("");
-  const [link, setLink] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
 
   const isOpen = props.activeModal === "add-modal"; // for use effect dependency below
@@ -14,7 +14,7 @@ const AddItemModal = (props) => {
   }
 
   function handleImageUrlChange(e) {
-    setLink(e.target.value);
+    setImageUrl(e.target.value);
   }
 
   function handleWeatherChange(e) {
@@ -25,17 +25,15 @@ const AddItemModal = (props) => {
     e.preventDefault();
     props.onAddItem({
       name,
-      link,
+      imageUrl,
       weather,
-      // create a dummy id for our clothing card
-      _id: Math.floor(Math.random() * (100000000 - 0 + 1)) + 0,
     });
   }
 
   useEffect(() => {
     setName("");
     setWeather("");
-    setLink("");
+    setImageUrl("");
   }, [isOpen]);
 
   return (
@@ -52,6 +50,7 @@ const AddItemModal = (props) => {
             type="text"
             placeholder="Name"
             minLength={2}
+            maxLength={20}
             required
           />
           <span className="form__input-error name-input-error"></span>
@@ -60,7 +59,7 @@ const AddItemModal = (props) => {
           Image
           <input
             onChange={handleImageUrlChange}
-            value={link}
+            value={imageUrl}
             className="form__input"
             id="image-input"
             name="imageURL"

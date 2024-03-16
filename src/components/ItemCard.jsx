@@ -1,9 +1,9 @@
 import "../blocks/ItemCard.css";
 import heart from "../assets/Heart.svg";
 
-function ItemCard({ image, setCurrentCard, onOpen }) {
+function ItemCard({ item, setCurrentCard, onOpen }) {
   function cardClick() {
-    setCurrentCard({ name: image.name, link: image.link });
+    setCurrentCard({ ...item });
     onOpen("card-modal");
   }
 
@@ -14,9 +14,9 @@ function ItemCard({ image, setCurrentCard, onOpen }) {
 
   return (
     <li className="card" onClick={cardClick}>
-      <img className="card__image" src={image.link} alt={image.name} />
+      <img className="card__image" src={item.imageUrl} alt={item.name} />
       <div className="card__overlay-elements">
-        <h3 className="card__title">{image.name}</h3>
+        <h3 className="card__title">{item.name}</h3>
         <img
           className="card__heart"
           src={heart}

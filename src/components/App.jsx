@@ -1,4 +1,6 @@
 import "../blocks/App.css";
+import API from "../utils/api.js";
+import "../scripts/pages/index.js";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -8,11 +10,13 @@ import Profile from "./Profile.jsx";
 import weatherAPI from "../utils/weatherApi.js";
 import ToggleSwitch from "./ToggleSwitch.jsx";
 import AddItemModal from "./AddItemModal.jsx";
-import { CurrentTemperatureUnitContext } from "../contexts/currentTemperatureUnit.js";
+import DeleteConfirmationModal from "./DeleteConfirmationModal.jsx";
+import FormValidator from "../scripts/components/formValidator.js";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { useState, useEffect } from "react";
-import { apiKey, coords, defaultClothingItems } from "../utils/constants.js";
+import { apiKey, coords } from "../utils/constants.js";
 import { Routes, Route } from "react-router-dom";
-import API from "../utils/api.js";
+import { formValidationConfig } from "../utils/constants.js";
 
 const WeatherApi = new weatherAPI({
   apiKey: apiKey,
@@ -22,17 +26,19 @@ const WeatherApi = new weatherAPI({
   },
 });
 
-const userDataApi = new API();
+const cardsApi = new API(); // card
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [temperature, setTemperature] = useState({}); // 75 deg
-  const [weather, setWeather] = useState(""); // hot warm cold
-  const [weatherStatus, setWeatherStatus] = useState(""); // cloudy snow rain
-  const [location, setLocation] = useState(""); // Miami
-  const [modalCard, setCurrentCard] = useState({ name: "", link: "" }); // Card info for modal
-  const [timeOfDay, setTimeOfDay] = useState(""); // day or night (needed for weather card image)
+  const [temperature, setTemperature] = useState({});
+  const [weather, setWeather] = useState("");
+  const [weatherStatus, setWeatherStatus] = useState("");
+  const [location, setLocation] = useState("");
+  const [modalCard, setCurrentCard] = useState({ name: "", link: "" }); // this holds the current card when the card modal is opened
+  const [timeOfDay, setTimeOfDay] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothing, setClothing] = useState({});
+  const [rerenderAfterFetch, setRerenderAfterFetch] = useState(false); // if we add or delete items then force a rerender of our clothing items
 
   function onClose() {
     setActiveModal("");
@@ -43,12 +49,16 @@ function App() {
   }
 
   function handleAddItemSubmit(clothingItem) {
+    cardsApi.postClothingItem(clothingItem);
+    setRerenderAfterFetch(!rerenderAfterFetch); // rerender our cards images
     onClose();
-    userDataApi.setClothingItems([...defaultClothingItems, clothingItem]);
   }
 
-  function handleItemDelete(card) {
-    // delete card
+  function handleCardDelete() {
+    cardsApi.deleteClothingItem(modalCard._id);
+    setRerenderAfterFetch(!rerenderAfterFetch); // rerender our cards images
+
+    setCurrentCard("");
     onClose();
   }
 
@@ -69,6 +79,25 @@ function App() {
         console.log(`Error Status Code: ${error.status}`);
       });
   }, []);
+
+  useEffect(() => {
+    cardsApi
+      .getClothingItems()
+      .then((data) => {
+        setClothing([...data]);
+      })
+      .catch((error) => {
+        console.log(`Error Status Code: ${error.status}`);
+      });
+  }, [rerenderAfterFetch]);
+
+  useEffect(() => {
+    const forms = Array.from(document.getElementsByTagName("form"));
+    forms.forEach((form) => {
+      const formObj = new FormValidator(formValidationConfig, form);
+      formObj.enableValidation();
+    });
+  });
 
   useEffect(() => {
     function escapeClose(e) {
@@ -100,7 +129,7 @@ function App() {
               <Main
                 onOpen={onOpen}
                 setCurrentCard={setCurrentCard}
-                images={defaultClothingItems}
+                clothing={clothing}
                 temperature={temperature}
                 weather={weather}
                 weatherStatus={weatherStatus}
@@ -112,9 +141,10 @@ function App() {
             path="/profile"
             element={
               <Profile
-                images={defaultClothingItems}
+                clothing={clothing}
                 onOpen={onOpen}
                 setCurrentCard={setCurrentCard}
+                setActiveModal={setActiveModal}
               />
             }
           ></Route>
@@ -136,7 +166,14 @@ function App() {
         card={modalCard}
         weather={weather}
         activeModal={activeModal}
+        setActiveModal={setActiveModal}
         name="card-modal"
+      />
+
+      <DeleteConfirmationModal
+        onClose={onClose}
+        activeModal={activeModal}
+        deleteCardCallback={handleCardDelete}
       />
     </div>
   );

@@ -37,6 +37,10 @@
   font-size: 16px;
   margin-top: 0px;
   margin-bottom: 0px;
+  max-width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .card__heart {
@@ -52,4 +56,10 @@
 
 .card__heart-liked {
   content: url("../assets/HeartLiked.svg");
+}
+
+@media screen and (width <= 400px) {
+  .card__title {
+    max-width: 70px;
+  }
 }

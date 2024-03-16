@@ -35,6 +35,12 @@
 
 .profile__items-header-addnew {
   opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__items-header-addnew:hover {
+  opacity: 0.3;
 }
 
 @media screen and (width <= 1140px) {
