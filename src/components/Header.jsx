@@ -1,8 +1,10 @@
 import "../blocks/Header.css";
 import "../blocks/HeaderHamburger.css";
 import "../blocks/HeaderHamburgerModal.css";
+import ToggleSwitch from "./ToggleSwitch";
 import AvatarImage from "../assets/Avatar.png";
 import Logo from "../assets/Logo.svg";
+import { Link } from "react-router-dom";
 
 function Header({ location, onOpen, onClose, mobileModal, activeModal }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -14,24 +16,35 @@ function Header({ location, onOpen, onClose, mobileModal, activeModal }) {
     <>
       <header className="header">
         <div className="header__section">
-          <img className="header__logo" src={Logo} alt="Logo" />
+          <Link to="/">
+            <img className="header__logo" src={Logo} alt="Logo" />
+          </Link>
+
           <h2 className="header-text  header__text_datelocation">
             {currentDate}, {location}
           </h2>
         </div>
         <div className="header__section header__section-desktop">
+          <div className="header__toggle">
+            <ToggleSwitch />
+          </div>
           <h2
             className="header-text header__text-add"
             onClick={() => onOpen("add-modal")}
           >
             + Add clothes
           </h2>
-          <h2 className="header-text header__text-name">Terrance Tegegne</h2>
-          <img
-            className="header__avatar"
-            src={AvatarImage}
-            alt="Avatar Image"
-          />
+          <Link
+            to="/profile"
+            className="header__profile header_profile_desktop"
+          >
+            <h2 className="header-text header__text-name">Terrance Tegegne</h2>
+            <img
+              className="header__avatar"
+              src={AvatarImage}
+              alt="Avatar Image"
+            />
+          </Link>
         </div>
         <div
           className="header__section header__section-mobile header-hamburger"

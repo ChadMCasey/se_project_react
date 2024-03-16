@@ -22,9 +22,12 @@ export default class weatherAPI {
   _cleanData(res) {
     return {
       location: res.name,
-      temperature: Math.round(res.main.temp),
+      temperature: {
+        F: Math.round(res.main.temp),
+        C: Math.round(((res.main.temp - 32) * 5) / 9),
+      },
       weather: {
-        temp: chooseWeather(res.main.temp),
+        weatherFeeling: chooseWeather(res.main.temp),
         status: chooseStatus(res.weather[0].id),
       },
       timeofday: chooseTimeofDay(res.sys.sunrise, res.sys.sunset),

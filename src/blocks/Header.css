@@ -44,6 +44,19 @@
   margin: 0px 16px 16px;
 }
 
+.header__toggle {
+  margin: 0px 20px 0px 0px;
+  display: flex;
+  place-content: center;
+}
+
+.header_profile_desktop {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
 @media screen and (width <= 790px) {
   .header__section-desktop {
     display: none;

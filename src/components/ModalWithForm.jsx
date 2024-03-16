@@ -12,19 +12,8 @@ function ModalWithForm({
   activeModal,
   onClose,
   children,
-  submitCallback,
+  submitHandle,
 }) {
-  function gatherFormData(e) {
-    e.preventDefault();
-    const formSubmissionData = {};
-    Array.from(e.target.elements).forEach((element) => {
-      if (element.tagName === "INPUT") {
-        formSubmissionData[element.name] = element.value;
-      }
-    });
-    submitCallback(formSubmissionData);
-  }
-
   return (
     <div
       className={`modal ${
@@ -33,7 +22,7 @@ function ModalWithForm({
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="modal__container">
-        <form className="form" name={name} onSubmit={gatherFormData}>
+        <form className="form" name={name} onSubmit={submitHandle}>
           <h3 className="form__header">{title}</h3>
           {children}
           <button

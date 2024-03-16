@@ -1,0 +1,62 @@
+.profile {
+  margin: 19px 40px 0px 40px;
+  display: grid;
+  grid-template-columns: 25fr 75fr;
+  place-items: start;
+}
+
+.profile__clothing {
+  width: 100%;
+}
+
+.profile__sidebar {
+  display: flex;
+  align-items: center;
+}
+
+.profile__avatar {
+  margin-right: 16px;
+  height: 56px;
+  width: 56px;
+}
+
+.profile-text {
+  font-size: 20px;
+  display: inline-block;
+}
+
+.profile__name {
+  margin: 0px;
+}
+
+.profile__clothing-header-text {
+  margin-right: 20px;
+}
+
+.profile__items-header-addnew {
+  opacity: 0.6;
+}
+
+@media screen and (width <= 1140px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile__sidebar {
+    display: none;
+  }
+  .profile__clothing-items .card-items__list {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+}
+
+@media screen and (width <= 790px) {
+  .profile {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .header__section-mobile .header-text {
+    display: none;
+  }
+}

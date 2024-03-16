@@ -2,6 +2,8 @@ import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import "../blocks/ItemCards.css";
 import "../blocks/Main.css";
+import { useContext } from "react";
+import { CurrentTemperatureUnitContext } from "../contexts/currentTemperatureUnit";
 
 function Main({
   temperature,
@@ -12,6 +14,7 @@ function Main({
   weatherStatus,
   timeOfDay,
 }) {
+  const currTempUnitContext = useContext(CurrentTemperatureUnitContext);
   return (
     <main className="main">
       <WeatherCard
@@ -20,7 +23,11 @@ function Main({
         timeOfDay={timeOfDay}
       />
       <h2 className="cards-title">
-        Today is {temperature}° F / You may want to wear:
+        Today is{" "}
+        {`${temperature[currTempUnitContext.currentTemperatureUnit]}° ${
+          currTempUnitContext.currentTemperatureUnit
+        }`}{" "}
+        / You may want to wear:
       </h2>
       <section className="card-items">
         <ul className="card-items__list">

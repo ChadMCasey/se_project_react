@@ -77,7 +77,7 @@ const weatherImages = [
   },
 ];
 
-const defaultClothingItems = [
+let defaultClothingItems = [
   {
     _id: 0,
     name: "Cap",

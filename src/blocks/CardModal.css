@@ -1,31 +1,40 @@
 .card-modal__container .modal__image {
-  margin-bottom: 20px;
+  max-height: 50vh;
   width: 100%;
+  object-fit: cover;
 }
 
-.card-modal__container .modal__heading {
-  margin-top: 0px;
-  margin-bottom: 12px;
-  margin-left: 32px;
+.modal__text-section {
+  margin: 20px 32px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
 }
 
-/* last child pseduo */
-.card-modal__container .modal__heading:last-child {
-  margin-bottom: 32px;
+.modal__heading {
+  margin: 0px 0px 12px;
+}
+
+.modal__heading:last-child {
+  margin-bottom: 0px;
 }
 
 .card-modal__container .modal__close {
   background-image: url("../assets/CloseWhite.svg");
 }
 
+.modal__delete {
+  border: none;
+  background-color: transparent;
+  color: #ff4d00;
+  font-family: inherit;
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+
 @media screen and (width <= 490px) {
-  .card-modal__container .modal__heading {
-    margin-left: 20px;
-  }
   .card-modal__container .modal__heading:last-child {
     margin-bottom: 40px;
-  }
-  .card-modal__container .modal__close {
-    background-image: url("../assets/CloseBlack.svg");
   }
 }
