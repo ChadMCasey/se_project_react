@@ -4,6 +4,7 @@ import "../blocks/DeleteModal.css";
 
 const DeleteConfirmationModal = ({
   onClose,
+  isLoading,
   activeModal,
   deleteCardCallback,
 }) => {
@@ -23,7 +24,7 @@ const DeleteConfirmationModal = ({
           type="button"
           onClick={deleteCardCallback}
         >
-          Yes, delete item
+          {isLoading ? "deleting..." : "Yes, delete item"}
         </button>
         <button className="modal__cancel" onClick={onClose}>
           Cancel

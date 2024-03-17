@@ -10,21 +10,27 @@ const AddItemModal = (props) => {
 
   function handleAddSubmit(e) {
     e.preventDefault();
-    resetForm();
-    props.onAddItem(values);
+    props.onAddItem(values, resetForm);
   }
+
+  useEffect(() => {
+    resetForm();
+  }, []);
+
   return (
     <ModalWithForm
       {...props}
       submitHandle={handleAddSubmit}
       isOpen={isOpen}
       isValid={isValid}
+      isLoading={props.isLoading}
     >
       <fieldset className="form__fieldset">
         <label className="form__field">
           Name
           <input
             onChange={handleChange}
+            value={values.name || ""}
             className="form__input"
             id="name-input"
             name="name"
@@ -40,6 +46,7 @@ const AddItemModal = (props) => {
           Image
           <input
             onChange={handleChange}
+            value={values.imageUrl || ""}
             className="form__input"
             id="image-input"
             name="imageUrl"
@@ -55,12 +62,13 @@ const AddItemModal = (props) => {
         <div className="form__field-radio">
           <input
             onChange={handleChange}
+            checked={values.weather === "hot"}
             type="radio"
             name="weather"
             id="hot"
             value="hot"
             className="form__input form__input-radio"
-            defaultChecked
+            required
           />
           <label className="form__label-radio" htmlFor="hot">
             Hot
@@ -69,11 +77,13 @@ const AddItemModal = (props) => {
         <div className="form__field-radio">
           <input
             onChange={handleChange}
+            checked={values.weather === "warm"}
             type="radio"
             name="weather"
             value="warm"
             id="warm"
             className="form__input form__input-radio"
+            required
           />
           <label className="form__label-radio" htmlFor="warm">
             Warm
@@ -82,11 +92,13 @@ const AddItemModal = (props) => {
         <div className="form__field-radio">
           <input
             onChange={handleChange}
+            checked={values.weather === "cold"}
             type="radio"
             name="weather"
             value="cold"
             id="cold"
             className="form__input form__input-radio"
+            required
           />
           <label className="form__label-radio" htmlFor="cold">
             Cold

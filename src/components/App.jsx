@@ -42,6 +42,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothing, setClothing] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function onClose() {
     setActiveModal("");
@@ -51,19 +52,23 @@ function App() {
     setActiveModal(activeModal);
   }
 
-  function handleAddItemSubmit(clothingItem) {
+  function handleAddItemSubmit(clothingItem, resetFormCallaback) {
+    setIsLoading(true);
     cardsApi
       .postClothingItem(clothingItem)
       .then((res) => {
-        setClothing([...clothing, res]);
+        setClothing([res, ...clothing]);
         onClose();
+        resetFormCallaback(); // reset and close on successful submission only
       })
-      .catch((error) => {
-        console.log(`Error Status Code: ${error.status}`);
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
   function handleCardDelete() {
+    setIsLoading(true);
     cardsApi
       .deleteClothingItem(modalCard._id)
       .then((res) => {
@@ -79,6 +84,9 @@ function App() {
       })
       .catch((error) => {
         console.log(`Error Status Code: ${error.status}`);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
@@ -170,6 +178,7 @@ function App() {
         name="new-garment"
         buttonText="Add Garment"
         onClose={onClose}
+        isLoading={isLoading}
         activeModal={activeModal}
         onAddItem={handleAddItemSubmit}
       />
@@ -185,6 +194,7 @@ function App() {
 
       <DeleteConfirmationModal
         onClose={onClose}
+        isLoading={isLoading}
         activeModal={activeModal}
         deleteCardCallback={handleCardDelete}
       />

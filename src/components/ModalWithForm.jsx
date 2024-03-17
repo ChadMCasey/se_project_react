@@ -13,6 +13,7 @@ function ModalWithForm({
   isOpen,
   children,
   submitHandle,
+  isLoading,
   isValid,
 }) {
   return (
@@ -30,7 +31,7 @@ function ModalWithForm({
             onClick={onClose}
           />
           <button className="modal__submit form__submit" disabled={!isValid}>
-            {buttonText}
+            {isLoading ? "saving..." : buttonText}
           </button>
         </form>
       </div>
