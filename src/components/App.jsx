@@ -1,24 +1,22 @@
 import "../blocks/App.css";
 import API from "../utils/api.js";
-import "../scripts/pages/index.js";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
 import Profile from "./Profile.jsx";
-import weatherAPI from "../utils/weatherApi.js";
+import WeatherAPI from "../utils/weatherApi.js";
 import ToggleSwitch from "./ToggleSwitch.jsx";
 import AddItemModal from "./AddItemModal.jsx";
 import DeleteConfirmationModal from "./DeleteConfirmationModal.jsx";
-import FormValidator from "../scripts/components/formValidator.js";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { useState, useEffect } from "react";
 import { apiKey, coords } from "../utils/constants.js";
 import { Routes, Route } from "react-router-dom";
 import { formValidationConfig } from "../utils/constants.js";
 
-const WeatherApi = new weatherAPI({
+const WeatherApi = new WeatherAPI({
   apiKey: apiKey,
   coords,
   headers: {
@@ -34,11 +32,16 @@ function App() {
   const [weather, setWeather] = useState("");
   const [weatherStatus, setWeatherStatus] = useState("");
   const [location, setLocation] = useState("");
-  const [modalCard, setCurrentCard] = useState({ name: "", link: "" }); // this holds the current card when the card modal is opened
+  const [modalCard, setCurrentCard] = useState({
+    name: "",
+    imageUrl: "",
+    weather: "",
+    _id: "",
+  });
   const [timeOfDay, setTimeOfDay] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothing, setClothing] = useState({});
-  const [rerenderAfterFetch, setRerenderAfterFetch] = useState(false); // if we add or delete items then force a rerender of our clothing items
+  const [isOpen, setIsOpen] = useState(false);
 
   function onClose() {
     setActiveModal("");
@@ -49,17 +52,34 @@ function App() {
   }
 
   function handleAddItemSubmit(clothingItem) {
-    cardsApi.postClothingItem(clothingItem);
-    setRerenderAfterFetch(!rerenderAfterFetch); // rerender our cards images
-    onClose();
+    cardsApi
+      .postClothingItem(clothingItem)
+      .then((res) => {
+        setClothing([...clothing, res]);
+        onClose();
+      })
+      .catch((error) => {
+        console.log(`Error Status Code: ${error.status}`);
+      });
   }
 
   function handleCardDelete() {
-    cardsApi.deleteClothingItem(modalCard._id);
-    setRerenderAfterFetch(!rerenderAfterFetch); // rerender our cards images
-
-    setCurrentCard("");
-    onClose();
+    cardsApi
+      .deleteClothingItem(modalCard._id)
+      .then((res) => {
+        setClothing((clothing) => {
+          return clothing.filter((article) => {
+            return article._id != modalCard._id;
+          });
+        });
+      })
+      .then(() => {
+        setCurrentCard({ name: "", imageUrl: "", weather: "" });
+        onClose();
+      })
+      .catch((error) => {
+        console.log(`Error Status Code: ${error.status}`);
+      });
   }
 
   function handleToggleSwitchChange() {
@@ -89,17 +109,10 @@ function App() {
       .catch((error) => {
         console.log(`Error Status Code: ${error.status}`);
       });
-  }, [rerenderAfterFetch]);
+  }, []);
 
   useEffect(() => {
-    const forms = Array.from(document.getElementsByTagName("form"));
-    forms.forEach((form) => {
-      const formObj = new FormValidator(formValidationConfig, form);
-      formObj.enableValidation();
-    });
-  });
-
-  useEffect(() => {
+    if (activeModal === "") return;
     function escapeClose(e) {
       e.key === "Escape" && onClose();
     }

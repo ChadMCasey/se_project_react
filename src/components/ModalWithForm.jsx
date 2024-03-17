@@ -3,22 +3,21 @@ import "../blocks/Modal.css";
 import "../blocks/Form.css";
 import "../blocks/NewGarmentModal.css";
 import { unmountComponentAtNode } from "react-dom";
-import "../scripts/pages/index.js";
+import "../hooks/useFormAndValidation.js";
 
 function ModalWithForm({
   name,
   buttonText,
   title,
-  activeModal,
   onClose,
+  isOpen,
   children,
   submitHandle,
+  isValid,
 }) {
   return (
     <div
-      className={`modal ${
-        activeModal === "add-modal" && "modal_opened"
-      } modal_type_${name}`}
+      className={`modal ${isOpen && "modal_opened"} modal_type_${name}`}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="modal__container">
@@ -29,8 +28,10 @@ function ModalWithForm({
             className="modal__close form__close"
             type="button"
             onClick={onClose}
-          ></button>
-          <button className="modal__submit form__submit">{buttonText}</button>
+          />
+          <button className="modal__submit form__submit" disabled={!isValid}>
+            {buttonText}
+          </button>
         </form>
       </div>
     </div>

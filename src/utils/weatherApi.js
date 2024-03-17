@@ -1,6 +1,6 @@
 import { chooseStatus, chooseWeather, chooseTimeofDay } from "./constants";
 
-export default class weatherAPI {
+export default class WeatherAPI {
   constructor({ apiKey, coords, headers }) {
     this._apiKey = apiKey;
     this._headers = headers;
@@ -9,7 +9,7 @@ export default class weatherAPI {
   }
 
   getWeatherData() {
-    return fetch(this._url).then(this._validateResult).then(this._cleanData);
+    return this._request(this._url, {}).then(this._cleanData);
   }
 
   _validateResult(res) {
@@ -17,6 +17,10 @@ export default class weatherAPI {
       return res.json();
     }
     return Promise.reject(res);
+  }
+
+  _request(url, options) {
+    return fetch(url, options).then(this._validateResult);
   }
 
   _cleanData(res) {

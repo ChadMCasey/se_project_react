@@ -1,49 +1,30 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
+import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 const AddItemModal = (props) => {
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState("");
-
-  const isOpen = props.activeModal === "add-modal"; // for use effect dependency below
-
-  function handleNameChange(e) {
-    setName(e.target.value);
-  }
-
-  function handleImageUrlChange(e) {
-    setImageUrl(e.target.value);
-  }
-
-  function handleWeatherChange(e) {
-    setWeather(e.target.value);
-  }
+  const isOpen = props.activeModal === "add-modal";
+  const { values, handleChange, errors, isValid, setValues, resetForm } =
+    useFormAndValidation();
 
   function handleAddSubmit(e) {
     e.preventDefault();
-    props.onAddItem({
-      name,
-      imageUrl,
-      weather,
-    });
+    resetForm();
+    props.onAddItem(values);
   }
-
-  useEffect(() => {
-    setName("");
-    setWeather("");
-    setImageUrl("");
-  }, [isOpen]);
-
   return (
-    <ModalWithForm {...props} submitHandle={handleAddSubmit}>
+    <ModalWithForm
+      {...props}
+      submitHandle={handleAddSubmit}
+      isOpen={isOpen}
+      isValid={isValid}
+    >
       <fieldset className="form__fieldset">
         <label className="form__field">
           Name
           <input
-            onChange={handleNameChange}
-            value={name}
+            onChange={handleChange}
             className="form__input"
             id="name-input"
             name="name"
@@ -53,55 +34,63 @@ const AddItemModal = (props) => {
             maxLength={20}
             required
           />
-          <span className="form__input-error name-input-error"></span>
+          <p className="form__input-error">{errors.name}</p>
         </label>
         <label className="form__field">
           Image
           <input
-            onChange={handleImageUrlChange}
-            value={imageUrl}
+            onChange={handleChange}
             className="form__input"
             id="image-input"
-            name="imageURL"
+            name="imageUrl"
             type="url"
             placeholder="Image URL"
             required
           />
-          <span className="form__input-error image-input-error"></span>
+          <p className="form__input-error">{errors.imageUrl}</p>
         </label>
       </fieldset>
       <fieldset className="form__fieldset form__fieldset-radio">
         <h3 className="form__heading">Select the weather type:</h3>
         <div className="form__field-radio">
           <input
-            onChange={handleWeatherChange}
+            onChange={handleChange}
             type="radio"
             name="weather"
+            id="hot"
             value="hot"
             className="form__input form__input-radio"
             defaultChecked
           />
-          <label className="form__label-radio">Hot</label>
+          <label className="form__label-radio" htmlFor="hot">
+            Hot
+          </label>
         </div>
         <div className="form__field-radio">
           <input
-            onChange={handleWeatherChange}
+            onChange={handleChange}
             type="radio"
             name="weather"
             value="warm"
+            id="warm"
             className="form__input form__input-radio"
           />
-          <label className="form__label-radio">Warm</label>
+          <label className="form__label-radio" htmlFor="warm">
+            Warm
+          </label>
         </div>
         <div className="form__field-radio">
           <input
-            onChange={handleWeatherChange}
+            onChange={handleChange}
             type="radio"
             name="weather"
             value="cold"
+            id="cold"
             className="form__input form__input-radio"
           />
-          <label className="form__label-radio">Cold</label>
+          <label className="form__label-radio" htmlFor="cold">
+            Cold
+          </label>
         </div>
       </fieldset>
     </ModalWithForm>

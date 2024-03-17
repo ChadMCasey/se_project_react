@@ -70,16 +70,18 @@ function Header({ location, onOpen, onClose, mobileModal, activeModal }) {
           activeModal === "hamburger-modal" && "hamburger_opened"
         }`}
       >
-        <div className="hamburger-modal__user">
-          <h2 className="header-text hamburger-modal__name">
-            Terrance Tegegne
-          </h2>
-          <img
-            className="header__avatar"
-            src={AvatarImage}
-            alt="Avatar Image"
-          />
-        </div>
+        <Link to="profile" className="header__profile" onClick={onClose}>
+          <div className="hamburger-modal__user">
+            <h2 className="header-text hamburger-modal__name">
+              Terrance Tegegne
+            </h2>
+            <img
+              className="header__avatar"
+              src={AvatarImage}
+              alt="Avatar Image"
+            />
+          </div>
+        </Link>
         <h2
           className="header-text hamburger-modal__add"
           onClick={() => onOpen("add-modal")}

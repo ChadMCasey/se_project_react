@@ -7,14 +7,14 @@ export default class API {
   }
 
   deleteClothingItem(id) {
-    return fetch(`${this._baseUrl}/items/${id}`, {
+    return this._request(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
       headers: this._headers,
     });
   }
 
   postClothingItem(obj) {
-    return fetch(`${this._baseUrl}/items`, {
+    return this._request(`${this._baseUrl}/items`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
@@ -26,10 +26,14 @@ export default class API {
   }
 
   getClothingItems() {
-    return fetch(`${this._baseUrl}/items`, {
+    return this._request(`${this._baseUrl}/items`, {
       method: "GET",
       headers: this._headers,
-    }).then(this._validateResults);
+    });
+  }
+
+  _request(url, options) {
+    return fetch(url, options).then(this._validateResults);
   }
 
   _validateResults(res) {

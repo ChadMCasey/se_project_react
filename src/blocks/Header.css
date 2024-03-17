@@ -50,7 +50,7 @@
   place-content: center;
 }
 
-.header_profile_desktop {
+.header__profile {
   display: flex;
   align-items: center;
   text-decoration: none;
