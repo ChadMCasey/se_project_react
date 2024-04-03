@@ -41,6 +41,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  transition: color 0.2s ease-in-out;
+}
+
+.card:hover .card__title {
+  color: #000;
 }
 
 .card__heart {

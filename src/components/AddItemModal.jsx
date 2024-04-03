@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
 import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 const AddItemModal = (props) => {
-  const isOpen = props.activeModal === "add-modal";
   const { values, handleChange, errors, isValid, setValues, resetForm } =
     useFormAndValidation();
 
@@ -20,13 +19,15 @@ const AddItemModal = (props) => {
   return (
     <ModalWithForm
       {...props}
+      name="new-garment"
+      title="New garment"
       submitHandle={handleAddSubmit}
-      isOpen={isOpen}
-      isValid={isValid}
-      isLoading={props.isLoading}
+      isOpen={props.activeModal === "add-modal"}
     >
       <fieldset className="form__fieldset">
-        <label className="form__field">
+        <label
+          className={`form__field ${errors.name && "form__field_invalid"}`}
+        >
           Name
           <input
             onChange={handleChange}
@@ -42,7 +43,9 @@ const AddItemModal = (props) => {
           />
           <p className="form__input-error">{errors.name}</p>
         </label>
-        <label className="form__field">
+        <label
+          className={`form__field ${errors.imageUrl && "form__field_invalid"}`}
+        >
           Image
           <input
             onChange={handleChange}
@@ -56,9 +59,9 @@ const AddItemModal = (props) => {
           />
           <p className="form__input-error">{errors.imageUrl}</p>
         </label>
-      </fieldset>
-      <fieldset className="form__fieldset form__fieldset-radio">
-        <h3 className="form__heading">Select the weather type:</h3>
+        <h3 className="form__heading form__heading-radio">
+          Select the weather type:
+        </h3>
         <div className="form__field-radio">
           <input
             onChange={handleChange}
@@ -105,6 +108,9 @@ const AddItemModal = (props) => {
           </label>
         </div>
       </fieldset>
+      <button className="modal__submit form__submit" disabled={!isValid}>
+        {props.isLoading ? "saving..." : "Add Garment"}
+      </button>
     </ModalWithForm>
   );
 };

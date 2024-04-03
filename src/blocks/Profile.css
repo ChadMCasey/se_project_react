@@ -9,12 +9,25 @@
   width: 100%;
 }
 
-.profile__sidebar {
+.profile__sidebar-user {
   display: flex;
   align-items: center;
 }
 
+.profile__sidebar-user-settings {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
 .profile__avatar {
+  margin-right: 16px;
+  height: 56px;
+  width: 56px;
+}
+
+.profile__avatar_default {
   margin-right: 16px;
   height: 56px;
   width: 56px;
@@ -61,8 +74,5 @@
   .profile {
     margin-left: 16px;
     margin-right: 16px;
-  }
-  .header__section-mobile .header-text {
-    display: none;
   }
 }

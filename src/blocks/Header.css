@@ -23,6 +23,11 @@
 .header__text-add {
   margin-right: 20px;
   cursor: pointer;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.header__text-add:hover {
+  opacity: 0.6;
 }
 
 .header__text-name {
@@ -35,13 +40,8 @@
   margin-right: 24px;
 }
 
-.header__avatar {
-  width: 40px;
-  height: 40px;
-}
-
 .header__section-mobile .header-text {
-  margin: 0px 16px 16px;
+  margin: 0px 40px 16px;
 }
 
 .header__toggle {
@@ -55,9 +55,28 @@
   align-items: center;
   text-decoration: none;
   color: inherit;
+  transition: color 0.25s ease-in-out;
+}
+.header__profile:hover {
+  color: rgba(0, 0, 0, 0.6);
 }
 
-@media screen and (width <= 790px) {
+.header__auth-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.header__auth-section .header-text {
+  transition: opacity 0.25s ease-in-out;
+}
+
+.header__auth-section .header-text:hover {
+  opacity: 0.6;
+}
+
+@media screen and (width <= 1140px) {
   .header__section-desktop {
     display: none;
   }
@@ -67,9 +86,18 @@
   .header__text_datelocation {
     display: none;
   }
+}
+
+@media screen and (width <= 790px) {
   .header {
-    margin-bottom: 32px;
+    margin-bottom: 10px;
     margin-left: 16px;
     margin-right: 16px;
+  }
+  .header__section-mobile {
+    display: block;
+  }
+  .header__section-mobile .header-text {
+    margin-left: 16px;
   }
 }

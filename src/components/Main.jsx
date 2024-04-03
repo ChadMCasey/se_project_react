@@ -13,6 +13,7 @@ function Main({
   weather,
   weatherStatus,
   timeOfDay,
+  handleCardLike,
 }) {
   const currTempUnitContext = useContext(CurrentTemperatureUnitContext);
   return (
@@ -41,6 +42,7 @@ function Main({
                   key={item._id}
                   setCurrentCard={setCurrentCard}
                   onOpen={onOpen}
+                  handleCardLike={handleCardLike}
                 />
               ))}
         </ul>

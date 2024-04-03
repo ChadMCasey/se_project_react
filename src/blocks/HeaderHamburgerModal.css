@@ -35,6 +35,11 @@
 .hamburger-modal__add {
   margin-right: 0px;
   cursor: pointer;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.hamburger-modal__add:hover {
+  opacity: 0.6;
 }
 
 .hamburger-modal__close {
@@ -48,5 +53,20 @@
   position: absolute;
   background: center no-repeat url("../assets/CloseBlack.svg");
   background-size: cover;
+  cursor: pointer;
+}
+
+.hamburger-modal_user-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.hamburger-modal_user-settings .user-settings__heading {
+  margin: 0px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }

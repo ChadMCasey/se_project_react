@@ -1,0 +1,7 @@
+.modal_type_login-modal .modal__close {
+  opacity: 0.3;
+}
+
+.modal_type_login-modal .modal__close:hover {
+  opacity: 0.7;
+}

@@ -2,15 +2,33 @@ import "../blocks/Header.css";
 import "../blocks/HeaderHamburger.css";
 import "../blocks/HeaderHamburgerModal.css";
 import ToggleSwitch from "./ToggleSwitch";
-import AvatarImage from "../assets/Avatar.png";
 import Logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
+import CurrentUserContext from "../contexts/CurrentUserContext";
+import { useContext } from "react";
+import HeaderAuthSection from "./HeaderAuthSection";
+import HeaderProfileSection from "./HeaderProfileSection";
+import "../blocks/Avatar.css";
+import HeaderHamburger from "./HeaderHamburger";
 
-function Header({ location, onOpen, onClose, mobileModal, activeModal }) {
+function Header({
+  location,
+  onOpen,
+  onClose,
+  mobileModal,
+  activeModal,
+  handleLogout,
+}) {
+  const { isLoggedIn, userData } = useContext(CurrentUserContext);
+  // console.log(userData);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  function handleAddItemModalOpen() {
+    onOpen("add-modal");
+  }
 
   return (
     <>
@@ -28,23 +46,20 @@ function Header({ location, onOpen, onClose, mobileModal, activeModal }) {
           <div className="header__toggle">
             <ToggleSwitch />
           </div>
-          <h2
-            className="header-text header__text-add"
-            onClick={() => onOpen("add-modal")}
-          >
-            + Add clothes
-          </h2>
-          <Link
-            to="/profile"
-            className="header__profile header_profile_desktop"
-          >
-            <h2 className="header-text header__text-name">Terrance Tegegne</h2>
-            <img
-              className="header__avatar"
-              src={AvatarImage}
-              alt="Avatar Image"
-            />
-          </Link>
+          {isLoggedIn && (
+            <h2
+              className="header-text header__text-add"
+              onClick={handleAddItemModalOpen}
+            >
+              + Add clothes
+            </h2>
+          )}
+
+          {isLoggedIn ? (
+            <HeaderProfileSection />
+          ) : (
+            <HeaderAuthSection onOpen={onOpen} />
+          )}
         </div>
         <div
           className="header__section header__section-mobile header-hamburger"
@@ -65,35 +80,14 @@ function Header({ location, onOpen, onClose, mobileModal, activeModal }) {
       </div>
 
       {/* hamburger menu (<=790px) */}
-      <div
-        className={`hamburger-modal modal_type_${mobileModal} ${
-          activeModal === "hamburger-modal" && "hamburger_opened"
-        }`}
-      >
-        <Link to="profile" className="header__profile" onClick={onClose}>
-          <div className="hamburger-modal__user">
-            <h2 className="header-text hamburger-modal__name">
-              Terrance Tegegne
-            </h2>
-            <img
-              className="header__avatar"
-              src={AvatarImage}
-              alt="Avatar Image"
-            />
-          </div>
-        </Link>
-        <h2
-          className="header-text hamburger-modal__add"
-          onClick={() => onOpen("add-modal")}
-        >
-          + Add clothes
-        </h2>
-        <button
-          className="hamburger-modal__close"
-          type="button"
-          onClick={onClose}
-        ></button>
-      </div>
+      <HeaderHamburger
+        activeModal={activeModal}
+        onOpen={onOpen}
+        onClose={onClose}
+        mobileModal={mobileModal}
+        handleLogout={handleLogout}
+        handleAddItemModalOpen={handleAddItemModalOpen}
+      />
     </>
   );
 }

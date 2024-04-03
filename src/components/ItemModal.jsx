@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import "../blocks/CardModal.css";
 import "../blocks/Modal.css";
+import CurrentUserContext from "../contexts/CurrentUserContext";
+
 function ItemModal({
   onClose,
   card,
@@ -10,6 +12,13 @@ function ItemModal({
   weather,
   deleteHandler,
 }) {
+  const { isLoggedIn, userData } = useContext(CurrentUserContext);
+  const deleteBtnClass =
+    card.owner !== userData._id ? "modal__delete-invisible" : "";
+
+  function openDeleteConfirmModal(e) {
+    setActiveModal("delete-modal");
+  }
   return (
     <div
       className={`modal ${
@@ -28,9 +37,9 @@ function ItemModal({
             <h3 className="modal__heading">Weather: {weather}</h3>
           </div>
           <button
-            className="modal__delete"
+            className={`modal__delete ${deleteBtnClass}`}
             type="button"
-            onClick={() => setActiveModal("delete-modal")}
+            onClick={openDeleteConfirmModal}
           >
             Delete item
           </button>

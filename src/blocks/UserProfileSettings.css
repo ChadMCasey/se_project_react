@@ -1,0 +1,13 @@
+.user-settings__heading:first-child {
+  margin: 0px;
+}
+
+.user-settings__heading {
+  margin-top: 8px;
+  font-size: 20px;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.user-settings__heading:hover {
+  opacity: 0.6;
+}

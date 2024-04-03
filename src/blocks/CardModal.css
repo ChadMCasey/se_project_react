@@ -19,6 +19,10 @@
   text-wrap: nowrap;
 }
 
+.modal__delete-invisible {
+  visibility: hidden;
+}
+
 .modal__heading:last-child {
   margin-bottom: 0px;
 }

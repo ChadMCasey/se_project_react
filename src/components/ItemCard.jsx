@@ -1,7 +1,11 @@
 import "../blocks/ItemCard.css";
 import heart from "../assets/Heart.svg";
+import CurrentUserContext from "../contexts/CurrentUserContext";
+import { useContext } from "react";
 
-function ItemCard({ item, setCurrentCard, onOpen }) {
+function ItemCard({ item, setCurrentCard, onOpen, handleCardLike }) {
+  const { isLoggedIn, userData } = useContext(CurrentUserContext);
+
   function cardClick() {
     setCurrentCard({ ...item });
     onOpen("card-modal");
@@ -9,7 +13,12 @@ function ItemCard({ item, setCurrentCard, onOpen }) {
 
   function cardHeart(e) {
     e.stopPropagation();
-    e.target.classList.toggle("card__heart-liked");
+    if (isLoggedIn) {
+      handleCardLike({
+        id: item._id,
+        isLiked: item.likes.includes(userData._id),
+      });
+    }
   }
 
   return (
@@ -17,12 +26,16 @@ function ItemCard({ item, setCurrentCard, onOpen }) {
       <img className="card__image" src={item.imageUrl} alt={item.name} />
       <div className="card__overlay-elements">
         <h3 className="card__title">{item.name}</h3>
-        <img
-          className="card__heart"
-          src={heart}
-          alt="Card Heart"
-          onClick={cardHeart}
-        />
+        {isLoggedIn && (
+          <img
+            className={`card__heart ${
+              item.likes.includes(userData._id) && "card__heart-liked"
+            }`}
+            src={heart}
+            alt="Card Heart"
+            onClick={cardHeart}
+          />
+        )}
       </div>
     </li>
   );

@@ -7,8 +7,8 @@ import SideBar from "./SideBar";
 const Profile = (props) => {
   return (
     <div className="profile">
-      <SideBar />
-      <ClothesSection {...props} />
+      <SideBar onOpen={props.onOpen} handleLogout={props.handleLogout} />
+      <ClothesSection {...props} handleCardLike={props.handleCardLike} />
     </div>
   );
 };

@@ -7,14 +7,11 @@ import "../hooks/useFormAndValidation.js";
 
 function ModalWithForm({
   name,
-  buttonText,
   title,
   onClose,
   isOpen,
   children,
   submitHandle,
-  isLoading,
-  isValid,
 }) {
   return (
     <div
@@ -25,15 +22,13 @@ function ModalWithForm({
         <form className="form" name={name} onSubmit={submitHandle}>
           <h3 className="form__header">{title}</h3>
           {children}
-          <button
-            className="modal__close form__close"
-            type="button"
-            onClick={onClose}
-          />
-          <button className="modal__submit form__submit" disabled={!isValid}>
-            {isLoading ? "saving..." : buttonText}
-          </button>
         </form>
+
+        <button
+          className="modal__close form__close"
+          type="button"
+          onClick={onClose}
+        />
       </div>
     </div>
   );
