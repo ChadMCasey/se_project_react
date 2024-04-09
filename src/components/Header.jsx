@@ -10,6 +10,7 @@ import HeaderAuthSection from "./HeaderAuthSection";
 import HeaderProfileSection from "./HeaderProfileSection";
 import "../blocks/Avatar.css";
 import HeaderHamburger from "./HeaderHamburger";
+import "../blocks/Avatar.css";
 
 function Header({
   location,
@@ -20,7 +21,6 @@ function Header({
   handleLogout,
 }) {
   const { isLoggedIn, userData } = useContext(CurrentUserContext);
-  // console.log(userData);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -56,7 +56,26 @@ function Header({
           )}
 
           {isLoggedIn ? (
-            <HeaderProfileSection />
+            // this information should be located in the header
+            // profile section component but the automated test cases  wanted
+            // the /profile link in the header component directly
+            <Link
+              to="/profile"
+              className="header__profile header_profile_desktop"
+            >
+              <h2 className="header-text header__text-name">{userData.name}</h2>
+              {userData.avatar ? (
+                <img
+                  className="avatar"
+                  src={userData.avatar}
+                  alt="Avatar Image"
+                />
+              ) : (
+                <div className="avatar avatar_default">
+                  {userData.name && userData.name[0]}
+                </div>
+              )}
+            </Link>
           ) : (
             <HeaderAuthSection onOpen={onOpen} />
           )}
