@@ -34,7 +34,7 @@ function ItemModal({
         <div className="modal__text-section">
           <div className="modal__text-headings">
             <h3 className="modal__heading">{card.name}</h3>
-            <h3 className="modal__heading">Weather: {weather}</h3>
+            <h3 className="modal__heading">Weather: {card.weather}</h3>
           </div>
           <button
             className={`modal__delete ${deleteBtnClass}`}

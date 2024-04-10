@@ -1,4 +1,4 @@
-import React, { useEffect, createRef, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import ModalWithForm from "../components/ModalWithForm.jsx";
 import { useFormAndValidation } from "../hooks/useFormAndValidation.js";
 import "../blocks/EditProfileModal.css";
@@ -14,9 +14,7 @@ const EditProfileModal = ({
   const { values, handleChange, errors, isValid, setValues, resetForm } =
     useFormAndValidation();
   const { userData } = useContext(CurrentUserContext);
-
-  const nameInput = createRef();
-  const avatarInput = createRef();
+  let isOpen = activeModal === "edit-profile-modal";
 
   function editProfileSubmitHandle(e) {
     e.preventDefault();
@@ -28,19 +26,23 @@ const EditProfileModal = ({
   }, []);
 
   useEffect(() => {
-    if (activeModal === "edit-profile-modal") {
-      const { name, avatar } = userData;
-      nameInput.current.value = name;
-      avatarInput.current.value = avatar;
+    if (isOpen) {
+      setValues((values) => {
+        return {
+          ...values,
+          name: userData.name,
+          avatar: userData.avatar,
+        };
+      });
     }
-  }, [activeModal]);
+  }, [isOpen]);
 
   return (
     <ModalWithForm
       title="Change profile data"
       name="edit-profile-modal"
       submitHandle={editProfileSubmitHandle}
-      isOpen={activeModal === "edit-profile-modal"}
+      isOpen={isOpen}
       onClose={onClose}
     >
       <fieldset className="form__fieldset">
@@ -49,7 +51,6 @@ const EditProfileModal = ({
         >
           Name
           <input
-            ref={nameInput}
             name="name"
             type="text"
             className="form__input"
@@ -63,7 +64,6 @@ const EditProfileModal = ({
         <label className="form__field">
           Avatar
           <input
-            ref={avatarInput}
             name="avatar"
             type="url"
             className="form__input"
