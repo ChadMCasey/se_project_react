@@ -30,7 +30,7 @@ const ClothesSection = ({
           {clothing.length > 0 &&
             clothing
               .filter((image) => {
-                return image.weather == weather && image.owner === userData._id;
+                return image.owner === userData._id;
               })
               .map((item) => (
                 <ItemCard

@@ -13,10 +13,15 @@ function ModalWithForm({
   children,
   submitHandle,
 }) {
+  function ModalContainerClose(e) {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  }
   return (
     <div
       className={`modal ${isOpen && "modal_opened"} modal_type_${name}`}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
+      onClick={(e) => ModalContainerClose(e)}
     >
       <div className="modal__container">
         <form className="form" name={name} onSubmit={submitHandle}>
