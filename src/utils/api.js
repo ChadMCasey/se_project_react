@@ -47,8 +47,8 @@ export default class API {
     });
   }
 
-  deleteClothingItem(id, token) {
-    return this._request(`${this._baseUrl}/items/${id}`, {
+  deleteClothingItem(itemID, token) {
+    return this._request(`${this._baseUrl}/items/${itemID}`, {
       method: "DELETE",
       headers: {
         ...this._headers,
