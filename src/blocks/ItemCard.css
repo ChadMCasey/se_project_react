@@ -6,7 +6,13 @@
   overflow: hidden;
   background-position: center;
   background-size: cover;
+  transition: box-shadow 0.2s ease-in-out;
 }
+
+.card:hover {
+  box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+}
+
 .card::after {
   content: "";
   display: block;
@@ -27,6 +33,25 @@
   align-items: center;
   gap: 8px;
   margin-top: 10px;
+}
+
+.card__enlarge {
+  opacity: 0;
+  color: white;
+  z-index: 1;
+  margin: 0px;
+  position: absolute;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.637);
+  font-size: 14px;
+  bottom: 5%;
+  left: 0%;
+  transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover .card__enlarge {
+  opacity: 1;
+  left: 10%;
 }
 
 .card__title {

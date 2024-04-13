@@ -37,6 +37,7 @@ function ItemCard({ item, setCurrentCard, onOpen, handleCardLike }) {
           />
         )}
       </div>
+      <p className="card__enlarge">View ➞</p>
     </li>
   );
 }

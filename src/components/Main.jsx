@@ -2,7 +2,7 @@ import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import "../blocks/ItemCards.css";
 import "../blocks/Main.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 
 function Main({
@@ -14,8 +14,10 @@ function Main({
   weatherStatus,
   timeOfDay,
   handleCardLike,
+  randomizeClothing,
 }) {
   const currTempUnitContext = useContext(CurrentTemperatureUnitContext);
+
   return (
     <main className="main">
       <WeatherCard
@@ -46,7 +48,11 @@ function Main({
                 />
               ))}
         </ul>
-        <button className="card-items__randomize" type="button">
+        <button
+          onClick={randomizeClothing}
+          className="card-items__randomize"
+          type="button"
+        >
           <span className="cards-items__randomize-refresh"> &#8635;</span>
           Randomize
         </button>

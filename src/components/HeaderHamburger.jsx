@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import HeaderAuthSection from "./HeaderAuthSection";
 import HeaderProfileSection from "./HeaderProfileSection";
 import CurrentUserContext from "../contexts/CurrentUserContext";
@@ -14,6 +14,7 @@ const HeaderHamburger = ({
   handleLogout,
 }) => {
   const { isLoggedIn } = useContext(CurrentUserContext);
+
   return (
     <div
       className={`hamburger-modal modal_type_${mobileModal} ${

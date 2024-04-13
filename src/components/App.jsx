@@ -22,6 +22,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext.js";
 import * as auth from "../utils/auth.js";
 import { setToken, getToken, removeToken } from "../utils/token.js";
 import EditProfileModal from "../components/EditProfileModal.jsx";
+import { shuffle } from "../utils/shuffle.js";
 
 const WeatherApi = new WeatherAPI({
   apiKey: apiKey,
@@ -61,6 +62,12 @@ function App() {
     weather: "",
     _id: "",
   });
+
+  function randomizeClothing(e) {
+    setClothing((clothing) => {
+      return [...shuffle(clothing)];
+    });
+  }
 
   function onClose() {
     setActiveModal("");
@@ -290,6 +297,7 @@ function App() {
                 <Main
                   onOpen={onOpen}
                   setCurrentCard={setCurrentCard}
+                  randomizeClothing={randomizeClothing}
                   clothing={clothing}
                   temperature={temperature}
                   weather={weather}
