@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import "../blocks/Avatar.css";
 
-const HeaderProfileSection = () => {
+const HeaderProfileSection = ({ onClose }) => {
   const { userData } = useContext(CurrentUserContext);
   return (
-    <Link to="/profile" className="header__profile header_profile_desktop">
+    <Link
+      to="/profile"
+      onClick={onClose}
+      className="header__profile header_profile_desktop"
+    >
       <h2 className="header-text header__text-name">{userData.name}</h2>
       {userData.avatar ? (
         <img className="avatar" src={userData.avatar} alt="Avatar Image" />

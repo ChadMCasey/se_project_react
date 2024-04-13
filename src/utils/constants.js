@@ -6,7 +6,10 @@ const coords = {
 };
 
 const userDataApiConfig = {
-  baseUrl: "http://localhost:3001",
+  baseUrl:
+    process.env.NODE_ENV === "production"
+      ? "https://api.wtwr.pii.at"
+      : "http://localhost:3001",
   headers: {
     "Content-Type": "application/json",
   },

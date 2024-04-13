@@ -3,7 +3,6 @@ import API from "./api";
 const api = new API();
 
 export const signup = (data) => {
-  console.log(JSON.stringify(data));
   return api.signUp(data);
 };
 

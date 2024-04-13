@@ -7,7 +7,6 @@ export default class API {
   }
 
   signUp({ name, avatar, email, password }) {
-    console.log(avatar);
     return this._request(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: this._headers,

@@ -56,26 +56,7 @@ function Header({
           )}
 
           {isLoggedIn ? (
-            // this information should be located in the header
-            // profile section component but the automated test cases  wanted
-            // the /profile link in the header component directly
-            <Link
-              to="/profile"
-              className="header__profile header_profile_desktop"
-            >
-              <h2 className="header-text header__text-name">{userData.name}</h2>
-              {userData.avatar ? (
-                <img
-                  className="avatar"
-                  src={userData.avatar}
-                  alt="Avatar Image"
-                />
-              ) : (
-                <div className="avatar avatar_default">
-                  {userData.name && userData.name[0]}
-                </div>
-              )}
-            </Link>
+            <HeaderProfileSection onClose={onClose} />
           ) : (
             <HeaderAuthSection onOpen={onOpen} />
           )}

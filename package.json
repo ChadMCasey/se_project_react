@@ -7,10 +7,10 @@
     "dev": "vite --open",
     "build": "vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "npm run build && scp -r ./dist/* gbchadd@wtwr.pii.at:/home/gbchadd/frontend"
   },
   "dependencies": {
     "react": "^18.2.0",

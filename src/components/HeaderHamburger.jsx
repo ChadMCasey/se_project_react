@@ -22,7 +22,7 @@ const HeaderHamburger = ({
     >
       {isLoggedIn ? (
         <>
-          <HeaderProfileSection />
+          <HeaderProfileSection onClose={onClose} />
           <section className="hamburger-modal_user-settings">
             <UserProfileSettings onOpen={onOpen} handleLogout={handleLogout} />
           </section>
