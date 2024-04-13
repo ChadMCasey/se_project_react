@@ -11,6 +11,7 @@ import HeaderProfileSection from "./HeaderProfileSection";
 import "../blocks/Avatar.css";
 import HeaderHamburger from "./HeaderHamburger";
 import "../blocks/Avatar.css";
+import { pencil } from "../utils/constants";
 
 function Header({
   location,
@@ -41,6 +42,12 @@ function Header({
           <h2 className="header-text  header__text_datelocation">
             {currentDate}, {location}
           </h2>
+          <img
+            src={pencil}
+            onClick={() => onOpen("edit-location-modal")}
+            alt="Edit Location Pencil"
+            className="header__location-edit"
+          />
         </div>
         <div className="header__section header__section-desktop">
           <div className="header__toggle">

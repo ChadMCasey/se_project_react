@@ -13,7 +13,7 @@ import LoginModal from "./LoginModal.jsx";
 import DeleteConfirmationModal from "./DeleteConfirmationModal.jsx";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { useState, useEffect } from "react";
-import { apiKey, coords } from "../utils/constants.js";
+import { apiKey, coords, defaultWeatherURL } from "../utils/constants.js";
 import { Routes, Route } from "react-router-dom";
 import { formValidationConfig } from "../utils/constants.js";
 import RegisterModal from "./RegisterModal.jsx";
@@ -23,6 +23,8 @@ import * as auth from "../utils/auth.js";
 import { setToken, getToken, removeToken } from "../utils/token.js";
 import EditProfileModal from "../components/EditProfileModal.jsx";
 import { shuffle } from "../utils/shuffle.js";
+import EditLocationModal from "./EditLocationModal";
+import BadRequest from "../utils/errors/BadRequest";
 
 const WeatherApi = new WeatherAPI({
   apiKey: apiKey,
@@ -67,6 +69,14 @@ function App() {
     setClothing((clothing) => {
       return [...shuffle(clothing)];
     });
+  }
+
+  function setWeatherAndLocation(data) {
+    setTemperature(data.temperature);
+    setLocation(data.location);
+    setWeather(data.weather.weatherFeeling);
+    setWeatherStatus(data.weather.status);
+    setTimeOfDay(data.timeofday);
   }
 
   function onClose() {
@@ -219,14 +229,31 @@ function App() {
       });
   }
 
+  function handleEditLocationSubmit(values) {
+    const url = WeatherApi.buildGeocodingUrl(values.location);
+    return WeatherApi.getGeocodingData(url)
+      .then((res) => {
+        if (res.length === 0) {
+          throw new BadRequest("The specified city could not be identified.");
+        }
+        return WeatherApi.buildWeatherDataUrl(res[0].lat, res[0].lon);
+      })
+      .then((url) => {
+        return WeatherApi.getWeatherData(url).then((data) => {
+          setWeatherAndLocation(data);
+          onClose();
+        });
+      })
+      .catch((err) => {
+        console.log(JSON.stringify(err.message));
+        console.error(`${err.status}: ${err.message}`);
+      });
+  }
+
   useEffect(() => {
-    WeatherApi.getWeatherData()
+    WeatherApi.getWeatherData(defaultWeatherURL)
       .then((data) => {
-        setTemperature(data.temperature);
-        setLocation(data.location);
-        setWeather(data.weather.weatherFeeling);
-        setWeatherStatus(data.weather.status);
-        setTimeOfDay(data.timeofday);
+        setWeatherAndLocation(data);
       })
       .catch((error) => {
         console.error(`Weather Query Error: ${error.status}`);
@@ -252,6 +279,7 @@ function App() {
         .then((res) => {
           const { _id, name, email, avatar } = res;
           setIsLoggedIn(true);
+
           setUserData({
             name,
             avatar,
@@ -267,9 +295,11 @@ function App() {
 
   useEffect(() => {
     if (activeModal === "") return;
+
     function escapeClose(e) {
       e.key === "Escape" && onClose();
     }
+
     window.addEventListener("keydown", escapeClose);
     return () => {
       window.removeEventListener("keydown", escapeClose);
@@ -351,6 +381,14 @@ function App() {
             isLoading={isLoading}
             activeModal={activeModal}
             onEditProfile={handleEditProfileSubmit}
+          />
+          <EditLocationModal
+            onClose={onClose}
+            name="edit-location-modal"
+            title="Edit City"
+            activeModal={activeModal}
+            editProfileSubmitCallback={handleEditLocationSubmit}
+            location={location}
           />
 
           <ItemModal

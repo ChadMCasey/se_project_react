@@ -1,15 +1,30 @@
-import { chooseStatus, chooseWeather, chooseTimeofDay } from "./constants";
+import {
+  chooseStatus,
+  chooseWeather,
+  chooseTimeofDay,
+  apiKey,
+} from "./constants";
 
 export default class WeatherAPI {
-  constructor({ apiKey, coords, headers }) {
+  constructor({ apiKey, headers }) {
     this._apiKey = apiKey;
     this._headers = headers;
-    this._coords = coords;
-    this._url = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${coords.latitude}&lon=${coords.longitude}&appid=${apiKey}`;
   }
 
-  getWeatherData() {
-    return this._request(this._url, {}).then(this._cleanData);
+  buildGeocodingUrl(city) {
+    return `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${this._apiKey}`;
+  }
+
+  buildWeatherDataUrl(lat, long) {
+    return `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${lat}&lon=${long}&appid=${this._apiKey}`;
+  }
+
+  getGeocodingData(url) {
+    return this._request(url, {});
+  }
+
+  getWeatherData(url) {
+    return this._request(url, {}).then(this._cleanData);
   }
 
   _validateResult(res) {

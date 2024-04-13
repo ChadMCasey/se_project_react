@@ -5,6 +5,8 @@ const coords = {
   longitude: -80.191788,
 };
 
+const defaultWeatherURL = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${coords.latitude}&lon=${coords.longitude}&appid=${apiKey}`;
+
 const userDataApiConfig = {
   baseUrl:
     process.env.NODE_ENV === "production"
@@ -27,8 +29,7 @@ const formValidationConfig = {
 const weatherImages = [
   {
     name: "Day-Sunny",
-    image: new URL("../../assets/DayWeather/Day-Sunny.png", import.meta.url)
-      .href,
+    image: new URL("../assets/DayWeather/Day-Sunny.png", import.meta.url).href,
   },
   {
     name: "Day-Cloudy",
@@ -88,6 +89,8 @@ const weatherImages = [
   },
 ];
 
+const pencil = new URL("../assets/Pencil.png", import.meta.url).href;
+
 function chooseWeather(temp) {
   return temp >= 86 ? "hot" : temp >= 66 ? "warm" : "cold";
 }
@@ -124,4 +127,6 @@ export {
   chooseWeather,
   chooseStatus,
   chooseTimeofDay,
+  pencil,
+  defaultWeatherURL,
 };
