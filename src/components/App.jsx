@@ -71,6 +71,16 @@ function App() {
     });
   }
 
+  useEffect(() => {
+    const modals = Array.from(document.querySelectorAll(".modal"));
+    if (activeModal === "") {
+      const modals = Array.from(document.querySelectorAll(".modal"));
+      modals.forEach((modal) => (modal.style.pointerEvents = "none"));
+    } else {
+      modals.forEach((modal) => (modal.style.pointerEvents = "auto"));
+    }
+  }, [activeModal]);
+
   function setWeatherAndLocation(data) {
     setTemperature(data.temperature);
     setLocation(data.location);
@@ -98,6 +108,7 @@ function App() {
       .then((res) => {
         setClothing([res, ...clothing]);
         onClose();
+
         resetFormCallaback();
       })
       .catch((err) => {

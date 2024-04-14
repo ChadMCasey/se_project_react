@@ -18,6 +18,7 @@ function ModalWithForm({
       onClose();
     }
   }
+
   return (
     <div
       className={`modal ${isOpen && "modal_opened"} modal_type_${name}`}

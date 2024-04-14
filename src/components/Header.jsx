@@ -46,7 +46,7 @@ function Header({
             src={pencil}
             onClick={() => onOpen("edit-location-modal")}
             alt="Edit Location Pencil"
-            className="header__location-edit"
+            className="header__location-edit header__text_datelocation"
           />
         </div>
         <div className="header__section header__section-desktop">
@@ -83,6 +83,12 @@ function Header({
       <div className="header__section header__section-mobile">
         <h2 className="header-text">
           {currentDate}, {location}
+          <img
+            src={pencil}
+            onClick={() => onOpen("edit-location-modal")}
+            alt="Edit Location Pencil"
+            className="header__location-edit"
+          />
         </h2>
       </div>
 
