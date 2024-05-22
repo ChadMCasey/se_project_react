@@ -1,6 +1,6 @@
 # What To Wear (WTWR)
 
-What To Wear is a basic full stack application that allows users to enter clothing articles, establish what weather conditions these clothing articles are intended for, and filter these items by the weather conditions. This was my first full stack application, and was a blast to create!
+What To Wear is a basic full stack application that allows users to login, create clothing cards, display these cards, delete these cards, view other individuals clothing cards, update their profile information, and more! This project was very developmental for me as it taught me tons of foundational full stack skills. These include things like frontend - backend communication and error handling (API creation), fetch request and proper API communcation methods, REST API's, Routing, Model creation in MongoDB, controller creation for backend request handling, middleware applications in backend development (body parsing, centralized error handling), site securiy (XXS, DDos, XSRF), and more. I decided to implement a responsive design as well, which was tricky, particularly with regards to getting images of different sizes to scale correctly at different screen dimensions. Moreover, this project furthered my understanding of the user of Modal popups, user authentication, secure data storage, JSON Web tokens, and more!
 
 This Project Features:
 
