@@ -18,5 +18,5 @@ This Project Features:
 
 
 ## Live Page & Backend Repoistory
-[Live Website](https://chadmcasey.github.io/se_project_react/](https://wtwr.pii.at/)
+[Live Website](https://wtwr.pii.at/) \
 [Backend Repository](https://github.com/ChadMCasey/se_project_express)
