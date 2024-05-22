@@ -10,6 +10,11 @@ This Project Features:
 - OpenWeatherAPI
 - User Authentication
 
-[Live Github Pages](https://chadmcasey.github.io/se_project_react/)
+## Demonstration
 
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWRzN3dubjZyaGd4ZmFoYnN6dWk4YnFsMnZrbnc4eW9ubjg4OThzeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Dla5MobtRtUAfd6qpb/giphy.gif)
+
+
+## Live Page & Backend Repoistory
+[Live Github Pages](https://chadmcasey.github.io/se_project_react/)
 [Backend Repository](https://github.com/ChadMCasey/se_project_express)
