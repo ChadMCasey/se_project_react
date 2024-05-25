@@ -12,7 +12,7 @@ This Project Features:
 - OpenWeatherAPI
 - User Authentication
 
-## Video Demonstration
+## Video Demonstration (click the image below)
 
 [![Watch the video](https://img.youtube.com/vi/IKz9mJ8-a0s/hqdefault.jpg)](https://www.youtube.com/watch?v=IKz9mJ8-a0s)
 
