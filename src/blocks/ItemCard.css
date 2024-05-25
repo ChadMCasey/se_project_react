@@ -47,6 +47,14 @@
   left: 0%;
   transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.card__expand {
+  margin-left: 5px;
+  width: 12px;
+  height: 12px;
 }
 
 .card:hover .card__enlarge {

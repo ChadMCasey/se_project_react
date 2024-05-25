@@ -90,6 +90,7 @@ const weatherImages = [
 ];
 
 const pencil = new URL("../assets/Pencil.png", import.meta.url).href;
+const expand = new URL("../assets/Expand.png", import.meta.url).href;
 
 function chooseWeather(temp) {
   return temp >= 86 ? "hot" : temp >= 66 ? "warm" : "cold";
@@ -128,5 +129,6 @@ export {
   chooseStatus,
   chooseTimeofDay,
   pencil,
+  expand,
   defaultWeatherURL,
 };

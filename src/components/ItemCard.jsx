@@ -2,6 +2,7 @@ import "../blocks/ItemCard.css";
 import heart from "../assets/Heart.svg";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import { useContext } from "react";
+import { expand } from "../utils/constants.js";
 
 function ItemCard({ item, setCurrentCard, onOpen, handleCardLike }) {
   const { isLoggedIn, userData } = useContext(CurrentUserContext);
@@ -37,7 +38,10 @@ function ItemCard({ item, setCurrentCard, onOpen, handleCardLike }) {
           />
         )}
       </div>
-      <p className="card__enlarge">Expand ➞</p>
+      <p className="card__enlarge">
+        Expand
+        <img className="card__expand" alt="card expand" src={expand} />
+      </p>
     </li>
   );
 }
