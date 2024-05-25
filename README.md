@@ -1,6 +1,8 @@
 # What To Wear (WTWR)
 
-What To Wear is a basic full stack application that allows users to enter clothing articles, establish what weather conditions these clothing articles are intended for, and filter these items by the weather conditions. This was my first full stack application, and was a blast to create!
+What To Wear is a basic full stack application that allows users to login, create clothing cards, display cards, delete cards, view other individuals cards, update their profile information, and more! 
+
+This project was very developmental for me as it taught me tons of foundational full stack skills. These include things like frontend - backend communication and error handling (API creation), fetch request and proper API communcation methods, REST API's, routing, database model creation in MongoDB, controller creation for backend request handling, middleware applications in backend development (body parsing, centralized error handling, security headers, data validation packages), site security (XXS, DDos, XSRF), and more. I decided to implement a responsive design as well, which was tricky, particularly with regards to getting images of different sizes to scale correctly at different screen dimensions. Moreover, this project furthered my understanding of the use & creation of modal popups, form validation, user authentication, secure data storage, JSON Web tokens, and much more!
 
 This Project Features:
 
@@ -10,6 +12,11 @@ This Project Features:
 - OpenWeatherAPI
 - User Authentication
 
-[Live Github Pages](https://chadmcasey.github.io/se_project_react/)
+## Demonstration
 
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWRzN3dubjZyaGd4ZmFoYnN6dWk4YnFsMnZrbnc4eW9ubjg4OThzeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Dla5MobtRtUAfd6qpb/giphy.gif)
+
+
+## Live Page & Backend Repository
+[Live Website](https://wtwr.pii.at/) \
 [Backend Repository](https://github.com/ChadMCasey/se_project_express)
