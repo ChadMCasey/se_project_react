@@ -17,7 +17,7 @@ This Project Features:
 [![Watch the video](https://img.youtube.com/vi/IKz9mJ8-a0s/hqdefault.jpg)](https://www.youtube.com/watch?v=IKz9mJ8-a0s)
 
 
-## Gif Demonstration
+## Demonstration
 
 ![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWRzN3dubjZyaGd4ZmFoYnN6dWk4YnFsMnZrbnc4eW9ubjg4OThzeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Dla5MobtRtUAfd6qpb/giphy.gif)
 
